@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import DataStreamer, { ServerRespond } from './DataStreamer';
+import React, {Component} from 'react';
+import DataStreamer, {ServerRespond} from './DataStreamer';
 import Graph from './Graph';
 import './App.css';
+import {setInterval} from "timers";
 
 /**
  * State declaration for <App />
@@ -12,8 +13,7 @@ interface IState {
 }
 
 /**
- * The parent element of the react app.
- * It renders title, button and Graph react element.
+ * The parent element of the react app. It renders title, button and Graph react element.
  */
 class App extends Component<{}, IState> {
   constructor(props: {}) {
@@ -37,11 +37,10 @@ class App extends Component<{}, IState> {
   }
 
   /**
-   * Get new data from server and update the state with the new data
+   * Get new data from server and update the state with the new data by creating a new 
+   * array of data that consists of previous data in the state and the new data from server
    */
   getDataFromServer() {
-    // Update the state by creating a new array of data that consists of
-    // Previous data in the state and the new data from server
     let x = 0;
     const interval = setInterval(() =>{
       DataStreamer.getData((serverResponds: ServerRespond[]) => {
@@ -69,12 +68,12 @@ class App extends Component<{}, IState> {
         </header>
         <div className="App-content">
           <button className="btn btn-primary Stream-button"
-            // when button is click, our react app tries to request
-            // new data from the server.
-            // As part of your task, update the getDataFromServer() function
-            // to keep requesting the data every 100ms until the app is closed
-            // or the server does not return anymore data.
-            onClick={() => {this.getDataFromServer()}}>
+            // When button is click, the getDataFromServer() is requesting the data every
+            // 100ms until the app is closed or the server does not return anymore data.
+            onClick={() => {
+              this.getDataFromServer()
+              }
+            }>
             Start Streaming Data
           </button>
           <div className="Graph">

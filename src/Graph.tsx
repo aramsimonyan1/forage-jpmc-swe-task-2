@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Table } from '@finos/perspective';
-import { ServerRespond } from './DataStreamer';
+import React, {Component} from 'react';
+import {Table} from '@finos/perspective';
+import {ServerRespond} from './DataStreamer';
 import './Graph.css';
 
 /**
@@ -46,15 +46,15 @@ class Graph extends Component<IProps, {}> {
     }
     if (this.table) {
       // Load the `table` in the `<perspective-viewer>` DOM reference.
-
-      // Add more Perspective configurations here.
       elem.load(this.table);
-      elem.setAttribute('view', 'y_line');  //‘view’ is the kind of graph we want to visualize the data with. Since we want a continuous line graph we’re using a y_line
-      elem.setAttribute('column-pivots', '["stock"]');  //‘column-pivots’ will allow us to distinguish stock ABC from DEF. We use ‘[“stock”]’ as its value here.
-      elem.setAttribute('row-pivots', '["timestamp"]'); // ‘row-pivots’ takes care of our x-axis. This allows us to map each datapoint based on its timestamp. Without this, the x-axis would be blank.
-      elem.setAttribute('columns', '["top_ask_price"]'); // ‘columns’ allows us to focus on a particular part of a stock’s data along the y-axis. Without this, the graph would plot different data points of a stock, i.e.: top_ask_price, top_bid_price, stock, timestamp. For this instance we only care about top_ask_price
+
+      // More Perspective configurations added here.
+      elem.setAttribute("view", "y_line");  //‘view’ is the kind of graph we want to visualize the data with. Since we want a continuous line graph we’re using a y_line
+      elem.setAttribute("column-pivots", '["stock"]');  //‘column-pivots’ will allow us to distinguish stock ABC from DEF. We use ‘[“stock”]’ as its value here.
+      elem.setAttribute("row-pivots", '["timestamp"]'); // ‘row-pivots’ takes care of our x-axis. This allows us to map each datapoint based on its timestamp. Without this, the x-axis would be blank.
+      elem.setAttribute("columns", '["top_ask_price"]'); // ‘columns’ allows us to focus on a particular part of a stock’s data along the y-axis. Without this, the graph would plot different data points of a stock, i.e.: top_ask_price, top_bid_price, stock, timestamp. For this instance we only care about top_ask_price
       // ‘aggregates’ allows us to handle the duplicated data we observed earlier and consolidate it into a single data point. We only want to consider a data point unique if it has a unique stock name and timestamp. If there are duplicates, we want to average out the top_bid_prices and the top_ask_prices of these ‘similar’ data points before treating them as one.
-      elem.setAttribute('aggregates', `
+      elem.setAttribute("aggregates", `
       {"stock":"distinct count",
       "top_ask_price":"avg",
       "top_bid_price":"avg",
