@@ -16,7 +16,6 @@
     Install all project dependencies. These are listed in the requirements.txt file:
     $pip install -r datafeed/requirements.txt
 
-
     Use npm, to install a series of javascript dependencies to your machine. If you already have access to npm on your system, you can skip this step. Otherwise, follow the instructions here (npm comes bundled with nodejs): https://nodejs.dev/en/learn/how-to-install-nodejs/
     For this project to work, you must have node 18.10.0 installed on your machine. Ensure you have the correct version by running “node -v” in your terminal. If you do not, consider using nvm to install the correct version for you.
 
@@ -36,5 +35,5 @@ Fix the client-side web application so that it displays a continuously updating 
     Next, open a new terminal and start the client by running:
     $npm start
 
-    Then, open you browser using url:
+    Then, open your browser using url:
     http://localhost:3000/
