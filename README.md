@@ -35,5 +35,5 @@ Fix the client-side web application so that it displays a continuously updating 
     Next, open a new terminal and start the client by running:
     $npm start
 
-    Then, open your browser using url:
+    If your browser didn't pop up, navigate to the below url and cick 'Start Streaming Data':
     http://localhost:3000/
